@@ -1,0 +1,79 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Colors — design.md §2 */
+  --color-primary: #4e2fd2;
+  --color-ink: #0b0d10;
+  --color-body: #1f1f1f;
+  --color-muted: #6f7882;
+  --color-active: #575757;
+  --color-label: #484848;
+  --color-category: #a8b2bd;
+  --color-strike: #d8392b;
+  --color-savings: #0aa288;
+  --color-link: #0046c7;
+  --color-panel: #edf4ff;
+  --color-panel-alt: #f0f4f7;
+  --color-surface: #ffffff;
+  --color-border: #ced6de;
+  --color-border-light: #e6ebf0;
+  --color-chip: #f1f1f2;
+
+  /* Typography — design.md §3 */
+  --font-sans: 'Manrope', system-ui, sans-serif;
+
+  /* Radii — design.md §4 */
+  --radius-panel: 10px;
+  --radius-button: 5px;
+  --radius-small: 4px;
+
+  /* Spacing — design.md §4 */
+  --spacing-card: 11px;
+  --spacing-panel: 15px;
+  --spacing-block: 20px;
+  --spacing-sm: 8px;
+  --spacing-md: 10px;
+  --spacing-lg: 12px;
+  --spacing-step: 13px;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: var(--color-surface);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button {
+    font-family: inherit;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@layer components {
+  .product-grid {
+    --template: minmax(0, 1fr);
+    display: grid;
+    grid-template-columns: var(--template);
+    gap: var(--spacing-step);
+  }
+
+  @media (min-width: 1024px) {
+    .product-grid {
+      --template: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    /* Only span the last odd item across both columns once there ARE two
+       explicit columns — spanning at the 1-column mobile width forces the
+       browser to grow an implicit auto-sized track, which then pulls every
+       other un-placed card into a lopsided, content-sized 2-column layout. */
+    .product-grid > :last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+  }
+}
