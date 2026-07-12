@@ -3,6 +3,7 @@ import type { ComponentType } from 'react'
 import { StepAccordion } from './components/builder/StepAccordion'
 import { STEPS } from './lib/steps'
 import { CameraIcon, ShieldIcon, SensorIcon, GridIcon } from './components/Icons'
+import { ReviewPanel } from './components/review/ReviewPanel'
 import type { Category } from './type'
 
 
@@ -50,12 +51,12 @@ function App() {
         <div className="flex items-start gap-6 max-lg:flex-col max-lg:items-stretch">
           <Builder />
           <aside className="sticky top-6 w-[399px] min-w-0 max-lg:static max-lg:w-full">
-            Review panel coming in step 5
+            <ReviewPanel />
           </aside>
         </div>
       </div>    </BundleProvider>
   )
-
+  
 
 }
 
