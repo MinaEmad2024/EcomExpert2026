@@ -18,7 +18,7 @@ export function LineItem({ line }: LineItemProps) {
   const [firstWord, ...rest] = line.name.split(' ')
 
   return (
-    <div className="flex items-center gap-sm">
+    <div data-testid={`review-line-${line.key}`} className="flex items-center gap-sm">
       {line.image ? (
         <img src={line.image} alt="" className="h-10 w-10 flex-shrink-0 rounded-small object-cover" />
       ) : (

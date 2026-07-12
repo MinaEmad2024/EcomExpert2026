@@ -8,10 +8,9 @@ import type { Product } from '../../type'
 
 interface ProductCardProps {
   product: Product
-  className?: string
 }
 
-export function ProductCard({ product, className }: ProductCardProps) {
+export function ProductCard({ product }: ProductCardProps) {
   const { state, setQty, selectVariant } = useBundle()
   const variants = product.variants
 
@@ -31,9 +30,10 @@ export function ProductCard({ product, className }: ProductCardProps) {
 
   return (
     <div
+      data-testid={`product-card-${product.id}`}
       className={`relative rounded-panel border bg-surface ${
         isSelected ? 'border-2 border-primary p-[10px]' : 'border-border p-card'
-      } ${className ?? ''}`}
+      } `}
     >
       {badge && (
         <span className="absolute -top-2.5 left-card rounded-xl bg-primary px-2.5 py-[3px] text-xs leading-[14.7px] font-semibold text-white">
