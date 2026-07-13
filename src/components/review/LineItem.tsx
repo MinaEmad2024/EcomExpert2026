@@ -18,13 +18,13 @@ export function LineItem({ line }: LineItemProps) {
   const [firstWord, ...rest] = line.name.split(' ')
 
   return (
-    <div data-testid={`review-line-${line.key}`} className="flex items-center gap-sm">
+    <div data-testid={`review-line-${line.key}`} className="flex items-center gap-2">
       {line.image ? (
         <img src={line.image} alt="" className="h-10 w-10 flex-shrink-0 rounded-small object-cover" />
       ) : (
         <WyzeShieldIcon className="h-10 w-10 flex-shrink-0 text-primary" />
       )}
-      <div className="min-w-0 flex-1 text-sm font-semibold text-ink">
+      <div className="min-w-0 flex-1 text-[13px] leading-4 font-semibold text-ink">
         {line.category === 'plan' ? (
           <>
             {firstWord} <span className="text-primary">{rest.join(' ')}</span>

@@ -26,12 +26,19 @@ export function ProductCard({ product }: ProductCardProps) {
     : quantity > 0
 
   const image = activeVariant?.cardImage ?? product.image
-  const badge = badgeText(product)
+  const badge = product.cardBadge ?? badgeText(product)
+  const compactDescriptionLink = product.id === 'cam-pan-v3'
+  const cardHeight =
+    product.id === 'battery-cam-pro'
+      ? 'lg:h-[166px]'
+      : product.id === 'cam-floodlight-v2' || product.id === 'duo-cam-doorbell'
+        ? 'lg:h-[174px]'
+        : 'lg:h-[160px]'
 
   return (
     <div
       data-testid={`product-card-${product.id}`}
-      className={`relative rounded-panel border bg-surface ${
+      className={`product-card relative rounded-panel border bg-surface ${cardHeight} ${
         isSelected ? 'border-2 border-primary p-[10px]' : 'border-border p-card'
       } `}
     >
@@ -40,20 +47,28 @@ export function ProductCard({ product }: ProductCardProps) {
           {badge}
         </span>
       )}
-      <div className="flex gap-lg">
+      <div className="flex h-full gap-lg">
         {image ? (
           <img className="h-24 w-24 flex-shrink-0 object-contain" src={image} alt="" />
         ) : (
           <WyzeShieldIcon className="h-24 w-24 flex-shrink-0 text-primary" />
         )}
-        <div className="flex min-w-0 flex-1 flex-col gap-sm">
+        <div className="product-card-content flex min-w-0 flex-1 flex-col gap-1">
           <h3 className="m-0 text-base font-semibold tracking-[0.6px] text-ink">{product.name}</h3>
           {product.description && (
             <p className="m-0 text-xs leading-[15.6px] font-medium tracking-[0.6px] text-body opacity-75">
               {product.description}
+              {compactDescriptionLink && product.learnMoreUrl && (
+                <>
+                  {' '}
+                  <a className="text-link" href={product.learnMoreUrl}>
+                    Learn More
+                  </a>
+                </>
+              )}
             </p>
           )}
-          {product.learnMoreUrl && (
+          {product.learnMoreUrl && !compactDescriptionLink && (
             <a className="text-xs font-medium text-link" href={product.learnMoreUrl}>
               Learn More
             </a>
@@ -73,8 +88,8 @@ export function ProductCard({ product }: ProductCardProps) {
               onChange={(next) => setQty(product.id, next, activeVariantId)}
             />
             <PriceDisplay
-              active={product.unitActive}
-              compareAt={product.unitCompareAt}
+              active={product.cardActive ?? product.unitActive}
+              compareAt={product.cardCompareAt ?? product.unitCompareAt}
               suffix={product.priceSuffix}
               variant="card"
             />

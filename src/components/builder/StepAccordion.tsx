@@ -30,7 +30,7 @@ export function StepAccordion({ category, stepNumber, title, icon, next, product
       className={
         expanded
           ? 'rounded-panel bg-panel p-panel'
-          : 'border-t border-border-light py-4'
+          : 'border-t border-border-light py-3'
       }
     >
       <button
@@ -39,13 +39,13 @@ export function StepAccordion({ category, stepNumber, title, icon, next, product
         onClick={() => toggleStep(category)}
         aria-expanded={expanded}
       >
-        <span className="flex min-w-0 flex-col gap-1.5">
-          <span className="text-xs font-medium tracking-[1.6px] text-category uppercase">
+          <span className="flex min-w-0 flex-col gap-0.5">
+            <span className="text-[10px] leading-3 font-medium tracking-[1.6px] text-category uppercase">
             STEP {stepNumber} OF 4
           </span>
           <span className="flex items-center gap-sm">
             <span className="h-6 w-6 flex-shrink-0 text-ink">{icon}</span>
-            <span className="text-2xl font-semibold text-ink">{title}</span>
+            <span className="text-[22px] leading-7 font-semibold text-ink">{title}</span>
           </span>
         </span>
         <span className="group flex flex-shrink-0 items-center gap-sm" data-expanded={expanded}>
@@ -67,7 +67,7 @@ export function StepAccordion({ category, stepNumber, title, icon, next, product
           {next && (
             <button
               type="button"
-              className="cursor-pointer self-start rounded-button border border-primary bg-transparent px-5 py-3 text-lg font-semibold text-primary"
+              className="cursor-pointer self-start rounded-button border border-primary bg-transparent px-6 py-2 text-lg font-semibold text-primary lg:self-center"
               onClick={handleNext}
             >
               Next: {next.title}

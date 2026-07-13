@@ -74,6 +74,8 @@
        other un-placed card into a lopsided, content-sized 2-column layout. */
     .product-grid > :last-child:nth-child(odd) {
       grid-column: 1 / -1;
+      width: 360px;
+      justify-self: center;
     }
   }
 }

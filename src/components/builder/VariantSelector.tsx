@@ -8,7 +8,7 @@ interface VariantSelectorProps {
 
 export function VariantSelector({ variants, activeVariantId, onSelect }: VariantSelectorProps) {
   return (
-    <div className="flex flex-wrap gap-sm">
+    <div className="flex flex-nowrap gap-1.5">
       {variants.map((variant) => {
         const isActive = variant.id === activeVariantId
         return (
@@ -22,7 +22,7 @@ export function VariantSelector({ variants, activeVariantId, onSelect }: Variant
             aria-pressed={isActive}
           >
             <img className="h-4 w-4 rounded-small object-cover" src={variant.chipImage} alt="" />
-            <span className="text-[10px] font-medium tracking-[0.6px] text-body">{variant.label}</span>
+            <span className="whitespace-nowrap text-[10px] font-medium tracking-[0.6px] text-body">{variant.label}</span>
           </button>
         )
       })}

@@ -7,10 +7,10 @@ export function Checkout() {
   const [saved, setSaved] = useState(false)
 
   return (
-    <div className="mt-3 flex flex-col items-center gap-3">
+    <div className="mt-2.5 flex flex-col items-center gap-2">
       <button
         type="button"
-        className="w-full cursor-pointer rounded-button border-0 bg-primary py-3.5 text-[17px] font-bold text-white"
+        className="w-full cursor-pointer rounded-button border-0 bg-primary py-3 text-[17px] font-bold text-white"
         onClick={() => setCheckedOut(true)}
       >
         Checkout

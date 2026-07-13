@@ -23,6 +23,9 @@
     "image": "/products/product-cam-pan-v3.png",
     "unitActive": 23.99,
     "unitCompareAt": 28.99,
+    "cardActive": 34.98,
+    "cardCompareAt": 39.98,
+    "cardBadge": "Save 12%",
     "variants": [
       { "id": "white", "label": "White", "chipImage": "/products/swatch-white.png", "seededQty": 2 },
       { "id": "black", "label": "Black", "chipImage": "/products/swatch-black.png", "seededQty": 0 }

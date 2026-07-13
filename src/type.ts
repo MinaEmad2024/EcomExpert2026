@@ -20,6 +20,10 @@ export interface Product {
   variants?: Variant[]
   unitActive: number
   unitCompareAt?: number
+  /** Optional display-only card values when the supplied design uses a stale price. */
+  cardActive?: number
+  cardCompareAt?: number
+  cardBadge?: string
   priceSuffix?: string
   /** Stepper is locked at its seeded quantity (e.g. Sense Hub). */
   required?: boolean

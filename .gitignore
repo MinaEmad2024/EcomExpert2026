@@ -19,3 +19,4 @@ yarn-debug.log*
 pnpm-debug.log*
 /coverage
 *.tsbuildinfo
+/docs
