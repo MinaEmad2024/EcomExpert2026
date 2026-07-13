@@ -16,8 +16,8 @@ export function VariantSelector({ variants, activeVariantId, onSelect }: Variant
             key={variant.id}
             type="button"
             className={`inline-flex cursor-pointer items-center gap-1.5 rounded-button border px-2 py-1 ${
-              isActive ? 'border-primary' : 'border-border'
-            } bg-surface`}
+              isActive ? 'border-savings bg-savings/5' : 'border-border bg-surface'
+            }`}
             onClick={() => onSelect(variant.id)}
             aria-pressed={isActive}
           >
