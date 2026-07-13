@@ -12,12 +12,14 @@ interface StepAccordionProps {
   icon: ReactNode
   next?: { category: Category; title: string }
   products: Product[]
+  layout?: 'main' | 'desktop-alt'
 }
 
-export function StepAccordion({ category, stepNumber, title, icon, next, products }: StepAccordionProps) {
+export function StepAccordion({ category, stepNumber, title, icon, next, products, layout = 'main' }: StepAccordionProps) {
   const { state, toggleStep } = useBundle()
   const expanded = state.expandedSteps[category]
   const count = selectedCount(state.products, state.quantities, category)
+  const desktopAltExpanded = layout === 'desktop-alt' && expanded
 
   function handleNext() {
     if (!next) return
@@ -30,7 +32,9 @@ export function StepAccordion({ category, stepNumber, title, icon, next, product
       className={
         expanded
           ? 'rounded-panel bg-panel p-panel'
-          : 'border-t border-border-light py-3'
+          : layout === 'desktop-alt'
+            ? 'border-t border-border-light pt-[14px] pb-[27px]'
+            : 'border-t border-border-light py-3'
       }
     >
       <button
@@ -39,11 +43,11 @@ export function StepAccordion({ category, stepNumber, title, icon, next, product
         onClick={() => toggleStep(category)}
         aria-expanded={expanded}
       >
-          <span className="flex min-w-0 flex-col gap-0.5">
+          <span className={`flex min-w-0 flex-col ${!expanded && layout === 'desktop-alt' ? 'gap-5' : 'gap-0.5'}`}>
             <span className="text-[10px] leading-3 font-medium tracking-[1.6px] text-category uppercase">
             STEP {stepNumber} OF 4
           </span>
-          <span className="flex items-center gap-sm">
+          <span className={`flex items-center gap-sm ${desktopAltExpanded ? 'mt-1 border-t border-[#8e98a4] pt-4' : ''}`}>
             <span className="h-6 w-6 flex-shrink-0 text-ink">{icon}</span>
             <span className="text-[22px] leading-7 font-semibold text-ink">{title}</span>
           </span>
@@ -59,9 +63,9 @@ export function StepAccordion({ category, stepNumber, title, icon, next, product
       </button>
       {expanded && (
         <div className="mt-panel flex flex-col gap-step">
-          <div className="product-grid">
+          <div className={layout === 'desktop-alt' ? 'desktop-alt-product-grid' : 'product-grid'}>
             {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product.id} product={product} layout={layout} />
             ))}
           </div>
           {next && (

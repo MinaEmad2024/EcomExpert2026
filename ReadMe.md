@@ -13,6 +13,10 @@ npm run dev
 
 Open the printed local URL (defaults to `http://localhost:5173`).
 
+### Desktop-alt reference layout
+
+The default URL renders the primary two-column layout. To view the alternate desktop composition corresponding to `docs/desktop-alt/figma-desktop-alt.png`, open `http://localhost:5173/?layout=desktop-alt`.
+
 Other commands:
 
 ```bash

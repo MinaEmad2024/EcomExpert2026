@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { useBundle } from '../../state/BundleContext'
 
-export function Checkout() {
+export function Checkout({ className = '' }: { className?: string }) {
   const { saveForLater } = useBundle()
   const [checkedOut, setCheckedOut] = useState(false)
   const [saved, setSaved] = useState(false)
 
   return (
-    <div className="mt-2.5 flex flex-col items-center gap-2">
+    <div className={`mt-2.5 flex flex-col items-center gap-2 ${className}`}>
       <button
         type="button"
         className="w-full cursor-pointer rounded-button border-0 bg-primary py-3 text-[17px] font-bold text-white"
