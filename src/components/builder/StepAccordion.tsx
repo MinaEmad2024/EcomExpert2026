@@ -20,6 +20,11 @@ export function StepAccordion({ category, stepNumber, title, icon, next, product
   const expanded = state.expandedSteps[category]
   const count = selectedCount(state.products, state.quantities, category)
   const desktopAltExpanded = layout === 'desktop-alt' && expanded
+  const stepDividerClass = desktopAltExpanded
+    ? 'relative before:absolute before:top-4 before:left-[-15px] before:right-[-15px] before:border-t before:border-[#8e98a4]'
+    : layout === 'main'
+      ? 'relative max-lg:before:absolute max-lg:before:top-4 max-lg:before:left-[-16px] max-lg:before:right-[-16px] max-lg:before:border-t max-lg:before:border-[#8e98a4]'
+      : ''
 
   function handleNext() {
     if (!next) return
@@ -31,15 +36,15 @@ export function StepAccordion({ category, stepNumber, title, icon, next, product
     <section
       className={
         expanded
-          ? 'rounded-panel bg-panel p-panel'
+          ? 'rounded-panel bg-panel p-panel max-lg:rounded-none max-lg:px-4'
           : layout === 'desktop-alt'
             ? 'border-t border-border-light pt-[14px] pb-[27px]'
-            : 'border-t border-border-light py-3'
+            : 'border-t border-border-light py-3 max-lg:px-4'
       }
     >
       <button
         type="button"
-        className="flex w-full cursor-pointer items-center justify-between gap-md border-0 bg-transparent p-0 text-left text-inherit"
+        className={`flex w-full cursor-pointer items-center justify-between gap-md border-0 bg-transparent p-0 text-left text-inherit ${stepDividerClass}`}
         onClick={() => toggleStep(category)}
         aria-expanded={expanded}
       >
@@ -47,7 +52,13 @@ export function StepAccordion({ category, stepNumber, title, icon, next, product
             <span className="text-[10px] leading-3 font-medium tracking-[1.6px] text-category uppercase">
             STEP {stepNumber} OF 4
           </span>
-          <span className={`flex items-center gap-sm ${desktopAltExpanded ? 'mt-1 border-t border-[#8e98a4] pt-4' : ''}`}>
+          <span
+            className={`flex items-center gap-sm ${
+              desktopAltExpanded
+                ? 'mt-1 pt-4'
+                : 'max-lg:mt-1 max-lg:pt-4'
+            }`}
+          >
             <span className="h-6 w-6 flex-shrink-0 text-ink">{icon}</span>
             <span className="text-[22px] leading-7 font-semibold text-ink">{title}</span>
           </span>

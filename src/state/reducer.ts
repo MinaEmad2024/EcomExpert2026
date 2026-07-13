@@ -21,11 +21,13 @@ export type BundleAction =
   | { type: 'SELECT_VARIANT'; productId: string; variantId: string }
   | { type: 'TOGGLE_STEP'; category: Category }
 
+const startsAtMobileWidth = typeof window !== 'undefined' && window.innerWidth < 1024
+
 export const initialState: BundleState = {
   products: [],
   quantities: {},
   activeVariant: {},
-  expandedSteps: { cameras: true, plan: false, sensors: false, accessories: false },
+  expandedSteps: { cameras: !startsAtMobileWidth, plan: false, sensors: false, accessories: false },
 }
 
 export function seedQuantities(products: Product[]): {

@@ -13,7 +13,7 @@ const CATEGORY_LABELS: Record<Category, string> = {
   cameras: 'Cameras',
   sensors: 'Sensors',
   accessories: 'Accessories',
-  plan: 'Plan',
+  plan: 'Home monitoring plan',
 }
 
 function CartGroups({ lines }: { lines: CartLine[] }) {
@@ -95,7 +95,7 @@ export function ReviewPanel({ layout = 'main' }: ReviewPanelProps) {
   }
 
   return (
-    <div className="rounded-panel bg-panel p-panel">
+    <div className="rounded-panel bg-panel p-panel max-lg:rounded-none max-lg:px-5">
       <span className="text-[10px] leading-3 font-medium tracking-[1.6px] text-category uppercase">Review</span>
       <h2 className="mt-1 text-[22px] leading-7 font-semibold text-ink">Your security system</h2>
       <p className="mt-1 text-[13px] leading-[17px] text-label">

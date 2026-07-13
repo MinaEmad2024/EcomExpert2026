@@ -47,7 +47,7 @@ function App() {
 
   return (
     <BundleProvider>
-      <div className={desktopAlt ? 'desktop-alt mx-auto max-w-[1230px] py-10' : 'mx-auto max-w-[1191px] px-6 py-10'}>
+      <div className={desktopAlt ? 'desktop-alt mx-auto max-w-[1230px] py-10' : 'mx-auto max-w-[1191px] px-6 py-10 max-lg:px-0 max-lg:pt-8'}>
         <h1
           className={`mb-6 text-center text-[32px] leading-[35px] font-bold tracking-[-0.06px] ${
             desktopAlt ? 'hidden' : 'hidden max-lg:block'
