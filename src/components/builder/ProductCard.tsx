@@ -40,8 +40,12 @@ export function ProductCard({ product, layout = 'main' }: ProductCardProps) {
   return (
     <div
       data-testid={`product-card-${product.id}`}
-      className={`product-card relative rounded-panel border bg-surface ${desktopAlt ? 'h-[331px]' : cardHeight} ${
-        isSelected ? 'border-2 border-primary p-[10px]' : desktopAlt ? 'border-border p-[10px]' : 'border-border p-card'
+      className={`product-card relative rounded-panel border bg-surface ${desktopAlt ? 'lg:h-[331px]' : cardHeight} ${
+        isSelected
+          ? 'border-2 border-primary p-[10px]'
+          : desktopAlt
+            ? 'border-border p-card lg:p-[10px]'
+            : 'border-border p-card'
       } `}
     >
       {badge && (
@@ -49,11 +53,25 @@ export function ProductCard({ product, layout = 'main' }: ProductCardProps) {
           {badge}
         </span>
       )}
-      <div className={`flex h-full ${desktopAlt ? 'flex-col gap-0' : 'gap-lg'}`}>
+      <div className={`flex h-full ${desktopAlt ? 'gap-lg lg:flex-col lg:gap-0' : 'gap-lg'}`}>
         {image ? (
-          <img className={desktopAlt ? 'h-[145px] w-full flex-shrink-0 object-contain' : 'h-24 w-24 flex-shrink-0 object-contain'} src={image} alt="" />
+          <img
+            className={
+              desktopAlt
+                ? 'h-24 w-24 flex-shrink-0 object-contain lg:h-[145px] lg:w-full'
+                : 'h-24 w-24 flex-shrink-0 object-contain'
+            }
+            src={image}
+            alt=""
+          />
         ) : (
-          <WyzeShieldIcon className={desktopAlt ? 'h-[145px] w-full flex-shrink-0 text-primary' : 'h-24 w-24 flex-shrink-0 text-primary'} />
+          <WyzeShieldIcon
+            className={
+              desktopAlt
+                ? 'h-24 w-24 flex-shrink-0 text-primary lg:h-[145px] lg:w-full'
+                : 'h-24 w-24 flex-shrink-0 text-primary'
+            }
+          />
         )}
         <div className="product-card-content flex min-w-0 flex-1 flex-col gap-1">
           <h3 className="m-0 text-base font-semibold tracking-[0.6px] text-ink">{product.name}</h3>

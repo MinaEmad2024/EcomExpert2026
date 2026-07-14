@@ -53,4 +53,18 @@ describe('App', () => {
     fireEvent.click(within(card).getByRole('button', { name: 'White' }))
     expect(within(card).getByText('2')).toBeInTheDocument()
   })
+
+  it('uses the main mobile composition for the desktop-alt route', async () => {
+    Object.defineProperty(window, 'innerWidth', { configurable: true, value: 390, writable: true })
+    window.history.pushState({}, '', '/?layout=desktop-alt')
+
+    render(<App />)
+
+    await screen.findByTestId('product-card-cam-v4')
+    expect(screen.getByRole('button', { name: 'Next: Choose your plan' })).toBeInTheDocument()
+    expect(document.querySelector('aside')).toBeInTheDocument()
+
+    window.history.pushState({}, '', '/')
+    Object.defineProperty(window, 'innerWidth', { configurable: true, value: 1024, writable: true })
+  })
 })

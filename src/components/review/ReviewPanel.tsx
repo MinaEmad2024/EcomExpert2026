@@ -49,9 +49,10 @@ export function ReviewPanel({ layout = 'main' }: ReviewPanelProps) {
 
   if (layout === 'desktop-alt') {
     return (
-      <section className="rounded-panel bg-panel px-[61px] py-8">
-        <div className="flex gap-12">
-          <div className="w-[552px] flex-shrink-0">
+      <>
+        <section className="hidden rounded-panel bg-panel px-[61px] py-8 lg:block">
+          <div className="flex gap-12">
+            <div className="w-[552px] flex-shrink-0">
             <h2 className="text-2xl leading-7 font-semibold text-ink">Your security system</h2>
             <p className="mt-1 text-[15px] leading-5 text-label">
               Review your personalized protection system designed to keep what matters most safe.
@@ -66,7 +67,7 @@ export function ReviewPanel({ layout = 'main' }: ReviewPanelProps) {
             </div>
           </div>
 
-          <div className="flex min-w-0 flex-1 gap-6">
+            <div className="flex min-w-0 flex-1 gap-6">
             <img
               src="/products/satisfaction-badge.png"
               alt="100% Wyze satisfaction guarantee"
@@ -88,14 +89,29 @@ export function ReviewPanel({ layout = 'main' }: ReviewPanelProps) {
               )}
               <Checkout className="mt-1" />
             </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <ReviewPanelMobile className="lg:hidden" lines={lines} totals={totals} />
+      </>
     )
   }
 
+  return <ReviewPanelMobile lines={lines} totals={totals} />
+}
+
+function ReviewPanelMobile({
+  lines,
+  totals,
+  className = '',
+}: {
+  lines: CartLine[]
+  totals: ReturnType<typeof computeTotals>
+  className?: string
+}) {
   return (
-    <div className="rounded-panel bg-panel p-panel max-lg:rounded-none max-lg:px-5">
+    <div className={`rounded-panel bg-panel p-panel max-lg:rounded-none max-lg:px-5 ${className}`}>
       <span className="text-[10px] leading-3 font-medium tracking-[1.6px] text-category uppercase">Review</span>
       <h2 className="mt-1 text-[22px] leading-7 font-semibold text-ink">Your security system</h2>
       <p className="mt-1 text-[13px] leading-[17px] text-label">

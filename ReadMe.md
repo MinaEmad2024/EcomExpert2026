@@ -1,5 +1,7 @@
 # Bundle Builder
 
+The design has been fine-tuned to match the supplied Figma design frames across the primary desktop, alternate desktop, and mobile layouts.
+
 A two-column, 4-step bundle builder (Cameras → Plan → Sensors → Add extra protection) with a live review panel that stays in sync as you configure a home-security system. Client-side React, data-driven from a local JSON file, with quantity/variant state, live totals, and "save my system for later" persistence.
 
 ## Run it

@@ -38,7 +38,7 @@ export function StepAccordion({ category, stepNumber, title, icon, next, product
         expanded
           ? 'rounded-panel bg-panel p-panel max-lg:rounded-none max-lg:px-4'
           : layout === 'desktop-alt'
-            ? 'border-t border-border-light pt-[14px] pb-[27px]'
+            ? 'border-t border-border-light pt-[14px] pb-[27px] max-lg:px-4 max-lg:py-3'
             : 'border-t border-border-light py-3 max-lg:px-4'
       }
     >
